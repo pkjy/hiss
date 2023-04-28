@@ -1,0 +1,46 @@
+CREATE TABLE short_url ( -- 分类
+	id VARCHAR(32) PRIMARY KEY, -- 主键
+  company_id VARCHAR(32) NOT NULL, -- 用户id
+  short_domain Text NOT NULL, -- 原始域名
+  short_hash Text NOT NULL, -- 短连值
+  original_url Text NOT NULL, -- 原始url
+  expire_at TIMESTAMP  -- 过期时间
+);
+
+
+CREATE TABLE short_domain (
+  id VARCHAR(32) PRIMARY KEY,
+  domain VARCHAR(32) NOT NULL,
+  company_id VARCHAR(32) NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  deleted_at TIMESTAMP
+)
+
+
+CREATE TABLE company (
+  id VARCHAR(32) PRIMARY KEY,
+  company_name VARCHAR(32) NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  deleted_at TIMESTAMP
+)
+
+CREATE TABLE user (
+  id VARCHAR(32) PRIMARY KEY,
+  user_name VARCHAR(32) NOT NULL,
+  user_email VARCHAR(32) NOT NULL,
+  user_password VARCHAR(32) NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  deleted_at TIMESTAMP
+)
+
+CREATE TABLE company_user(
+  id VARCHAR(32) PRIMARY KEY,
+  company_id VARCHAR(32) NOT NULL,
+  user_id VARCHAR(32) NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  deleted_at TIMESTAMP
+)
